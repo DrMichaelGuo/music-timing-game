@@ -1,0 +1,16 @@
+{
+  "name": "rhythm-master-build",
+  "version": "1.0.0",
+  "description": "Build tools for Rhythm Master game",
+  "scripts": {
+    "build": "node build.js",
+    "serve": "live-server src --port=8080 --open",
+    "test": "echo 'Open http://localhost:8080 and run tests in browser console'",
+    "deploy": "node deploy.js",
+    "clean": "rm -rf dist/",
+    "lint": "echo 'Linting not configured - add ESLint if needed'"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

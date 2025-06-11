@@ -1,0 +1,22 @@
+{
+  "name": "music-timing-game",
+  "version": "1.0.0",
+  "description": "A game to learn about musical time values including crotchets, minims, semibreves, quavers, and semi-quavers.",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build step not defined'",
+    "test": "echo 'No tests defined'"
+  },
+  "keywords": [
+    "music",
+    "game",
+    "timing",
+    "education"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}

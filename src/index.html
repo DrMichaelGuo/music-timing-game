@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhythm Master - Musical Timing Game</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="app-title">Rhythm Master</h1>
+                <p class="app-subtitle">Master musical time values with style</p>
+            </div>
+        </header>
+
+        <!-- Main Game Container -->
+        <main class="main-container">        <!-- Welcome Screen -->
+        <section id="welcome-screen" class="screen active">
+            <div class="welcome-content interactive-card">
+                <div class="icon-container">
+                    <div class="music-icon floating-element">♪</div>
+                </div>
+                <h2 class="gradient-text">Learn Musical Time Values</h2>
+                <p>Test your knowledge of crotchets, minims, semibreves, quavers, and semiquavers</p>
+                <button id="start-game-btn" class="primary-button button-press">Start Playing</button>
+                <button id="how-to-play-btn" class="secondary-button button-press">How to Play</button>
+                <button id="achievements-btn" class="secondary-button button-press">Achievements</button>
+            </div>
+        </section>
+
+        <!-- Achievements Screen -->
+        <section id="achievements-screen" class="screen">
+            <div class="achievements-content interactive-card">
+                <h2 class="gradient-text">Achievements</h2>
+                <div class="achievement-progress">
+                    <div class="progress-summary">
+                        <span id="achievement-count" class="achievement-count">0/6</span>
+                        <span class="achievement-label">Unlocked</span>
+                    </div>
+                    <div class="achievement-progress-bar">
+                        <div id="achievement-progress-fill" class="achievement-progress-fill"></div>
+                    </div>
+                </div>
+                
+                <div id="achievements-list" class="achievements-list">
+                    <!-- Achievements will be populated by JavaScript -->
+                </div>
+                
+                <div class="stats-summary">
+                    <h3>Your Stats</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span id="games-played" class="stat-value">0</span>
+                            <span class="stat-label">Games Played</span>
+                        </div>
+                        <div class="stat-item">
+                            <span id="total-score" class="stat-value">0</span>
+                            <span class="stat-label">Total Score</span>
+                        </div>
+                        <div class="stat-item">
+                            <span id="best-streak" class="stat-value">0</span>
+                            <span class="stat-label">Best Streak</span>
+                        </div>
+                        <div class="stat-item">
+                            <span id="average-score" class="stat-value">0%</span>
+                            <span class="stat-label">Average Score</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="back-from-achievements-btn" class="secondary-button button-press">Back</button>
+            </div>
+        </section>        <!-- How to Play Screen -->
+        <section id="how-to-play-screen" class="screen">
+            <div class="info-content interactive-card">
+                <h2>How to Play</h2>
+                <div class="note-guide">
+                    <div class="note-item interactive-card">
+                        <div class="note-symbol floating-element">𝅝</div>
+                        <div class="note-info">
+                            <h3>Semibreve</h3>
+                            <p>4 beats (whole note)</p>
+                        </div>
+                    </div>
+                    <div class="note-item interactive-card">
+                        <div class="note-symbol floating-element">𝅗𝅥</div>
+                        <div class="note-info">
+                            <h3>Minim</h3>
+                            <p>2 beats (half note)</p>
+                        </div>
+                    </div>
+                    <div class="note-item interactive-card">
+                        <div class="note-symbol floating-element">♩</div>
+                        <div class="note-info">
+                            <h3>Crotchet</h3>
+                            <p>1 beat (quarter note)</p>
+                        </div>
+                    </div>
+                    <div class="note-item interactive-card">
+                        <div class="note-symbol floating-element">♪</div>
+                        <div class="note-info">
+                            <h3>Quaver</h3>
+                            <p>½ beat (eighth note)</p>
+                        </div>
+                    </div>
+                    <div class="note-item interactive-card">
+                        <div class="note-symbol floating-element">♬</div>
+                        <div class="note-info">
+                            <h3>Semiquaver</h3>
+                            <p>¼ beat (sixteenth note)</p>
+                        </div>
+                    </div>
+                </div>
+                <button id="back-to-welcome-btn" class="secondary-button button-press">Back</button>
+            </div>
+        </section>
+
+            <!-- Game Screen -->
+            <section id="game-screen" class="screen">
+                <div class="game-header glass-effect">
+                    <div class="score-container">
+                        <span class="score-label">Score</span>
+                        <span id="score" class="score-value">0</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div id="progress-fill" class="progress-fill"></div>
+                        </div>
+                        <span id="question-counter" class="question-counter">1/10</span>
+                    </div>
+                </div>
+
+                <div class="game-content interactive-card">
+                    <div class="question-container">
+                        <h2 id="question-text">What is the time value of this note?</h2>
+                        <div id="note-display" class="note-display">
+                            <div id="current-note" class="current-note floating-element">♩</div>
+                        </div>
+                    </div>
+
+                    <div class="answers-container">
+                        <button class="answer-btn button-press" data-answer="semibreve">
+                            <span class="answer-symbol">𝅝</span>
+                            <span class="answer-name">Semibreve</span>
+                            <span class="answer-beats">4 beats</span>
+                        </button>
+                        <button class="answer-btn button-press" data-answer="minim">
+                            <span class="answer-symbol">𝅗𝅥</span>
+                            <span class="answer-name">Minim</span>
+                            <span class="answer-beats">2 beats</span>
+                        </button>
+                        <button class="answer-btn button-press" data-answer="crotchet">
+                            <span class="answer-symbol">♩</span>
+                            <span class="answer-name">Crotchet</span>
+                            <span class="answer-beats">1 beat</span>
+                        </button>
+                        <button class="answer-btn button-press" data-answer="quaver">
+                            <span class="answer-symbol">♪</span>
+                            <span class="answer-name">Quaver</span>
+                            <span class="answer-beats">½ beat</span>
+                        </button>
+                        <button class="answer-btn button-press" data-answer="semiquaver">
+                            <span class="answer-symbol">♬</span>
+                            <span class="answer-name">Semiquaver</span>
+                            <span class="answer-beats">¼ beat</span>
+                        </button>
+                    </div>
+
+                    <div id="feedback" class="feedback hidden">
+                        <div id="feedback-text"></div>
+                        <button id="next-question-btn" class="primary-button button-press">Next Question</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Screen -->
+            <section id="results-screen" class="screen">
+                <div class="results-content interactive-card">
+                    <div class="results-icon floating-element">🎉</div>
+                    <h2 class="gradient-text">Game Complete!</h2>
+                    <div class="final-score">
+                        <span class="score-text">Your Score</span>
+                        <span id="final-score" class="final-score-value gradient-text">0/10</span>
+                    </div>
+                    <div id="performance-message" class="performance-message"></div>
+                    <div class="results-actions">
+                        <button id="play-again-btn" class="primary-button button-press">Play Again</button>
+                        <button id="back-to-menu-btn" class="secondary-button button-press">Main Menu</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="scripts/audio.js"></script>
+    <script src="scripts/settings.js"></script>
+    <script src="scripts/achievements.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/ui.js"></script>
+    <!-- Development only: tests -->
+    <script src="scripts/tests.js"></script>
+</body>
+</html>
