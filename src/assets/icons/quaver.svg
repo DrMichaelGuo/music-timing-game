@@ -1,0 +1,16 @@
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <!-- Quaver (Eighth Note) - Filled oval with stem and single flag -->
+  <ellipse cx="18" cy="32" rx="6" ry="4" 
+           fill="currentColor"/>
+  <!-- Stem -->
+  <line x1="24" y1="32" x2="24" y2="8" 
+        stroke="currentColor" 
+        stroke-width="2"/>
+  <!-- Single Flag - Bold and distinctive -->
+  <path d="M24 8 C30 10, 34 14, 32 20 C30 18, 28 14, 26 12 C25 10, 24 9, 24 8 Z" 
+        fill="currentColor"/>
+  <!-- Additional flag detail for clarity -->
+  <path d="M24 10 C28 11, 30 14, 28 17 C27 15, 25 12, 24 10 Z" 
+        fill="currentColor" 
+        opacity="0.8"/>
+</svg>

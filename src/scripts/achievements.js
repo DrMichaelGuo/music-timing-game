@@ -50,6 +50,30 @@ class AchievementSystem {
                 icon: '📚',
                 unlocked: false,
                 hidden: false
+            },
+            'comparison_perfect': {
+                id: 'comparison_perfect',
+                name: 'Math Maestro',
+                description: 'Get 100% on a Note Comparison game',
+                icon: '🧮',
+                unlocked: false,
+                hidden: false
+            },
+            'comparison_speed': {
+                id: 'comparison_speed',
+                name: 'Quick Calculator',
+                description: 'Answer comparison questions in under 3 seconds each',
+                icon: '⚡',
+                unlocked: false,
+                hidden: false
+            },
+            'comparison_master': {
+                id: 'comparison_master',
+                name: 'Relationship Expert',
+                description: 'Complete 5 Note Comparison games',
+                icon: '🔗',
+                unlocked: false,
+                hidden: false
             }
         };
         
@@ -142,6 +166,27 @@ class AchievementSystem {
         if (this.checkNoteScholar() && !this.achievements.note_scholar.unlocked) {
             this.unlockAchievement('note_scholar');
             newUnlocks.push(this.achievements.note_scholar);
+        }
+        
+        // Comparison game achievements
+        if (gameData.gameMode === 'comparison') {
+            // Perfect score in comparison
+            if (gameData.score === gameData.totalQuestions && !this.achievements.comparison_perfect.unlocked) {
+                this.unlockAchievement('comparison_perfect');
+                newUnlocks.push(this.achievements.comparison_perfect);
+            }
+            
+            // Speed in comparison
+            if (gameData.averageResponseTime < 3000 && !this.achievements.comparison_speed.unlocked) {
+                this.unlockAchievement('comparison_speed');
+                newUnlocks.push(this.achievements.comparison_speed);
+            }
+            
+            // Mastery in comparison
+            if (this.gameStats.gamesPlayed >= 5 && !this.achievements.comparison_master.unlocked) {
+                this.unlockAchievement('comparison_master');
+                newUnlocks.push(this.achievements.comparison_master);
+            }
         }
         
         this.saveProgress();

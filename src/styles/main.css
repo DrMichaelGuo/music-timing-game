@@ -36,6 +36,7 @@
     
     /* Typography */
     --font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-family-music: 'Noto Music', 'Apple Symbols', 'Segoe UI Symbol', 'DejaVu Sans', Arial, sans-serif;
     --font-size-xs: 12px;
     --font-size-sm: 14px;
     --font-size-md: 16px;
@@ -166,6 +167,7 @@ body {
     color: white;
     box-shadow: var(--shadow-medium);
     margin-bottom: var(--spacing-lg);
+    font-family: var(--font-family-music);
 }
 
 .welcome-content h2 {
@@ -301,6 +303,10 @@ body {
     text-align: center;
     margin-right: var(--spacing-lg);
     color: var(--primary-blue);
+    font-family: var(--font-family-music);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .note-info h3 {
@@ -417,15 +423,22 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: default;
     user-select: none;
+    font-family: var(--font-family-music);
 }
 
-.current-note:hover {
+.current-note:hover,
+.current-note:hover svg {
     transform: scale(1.1) rotate(5deg);
 }
 
 @keyframes pulse {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.05); }
+}
+
+.current-note,
+.current-note svg {
+    animation: pulse 2s infinite;
 }
 
 .answers-container {
@@ -475,6 +488,10 @@ body {
     font-size: 32px;
     width: 50px;
     text-align: center;
+    font-family: var(--font-family-music);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .answer-name {
@@ -492,6 +509,47 @@ body {
 .answer-btn.correct .answer-beats,
 .answer-btn.incorrect .answer-beats {
     color: rgba(255, 255, 255, 0.8);
+}
+
+/* SVG Musical Note Icons */
+.note-svg {
+    width: 48px;
+    height: 48px;
+    color: var(--primary-blue);
+    transition: all 0.3s ease;
+}
+
+.answer-svg {
+    width: 32px;
+    height: 32px;
+    color: currentColor;
+}
+
+.current-note-svg {
+    width: 120px;
+    height: 120px;
+    color: var(--primary-blue);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.current-note-svg:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.music-icon-svg {
+    width: 80px;
+    height: 80px;
+    color: white;
+}
+
+/* Ensure SVG inherits text color */
+.answer-btn svg {
+    color: inherit;
+}
+
+.answer-btn.correct svg,
+.answer-btn.incorrect svg {
+    color: white;
 }
 
 /* Feedback */
@@ -805,7 +863,80 @@ body {
     opacity: 0.9;
 }
 
-/* Responsive Design */
+/* Comparison Game Specific Styles */
+.comparison-info {
+    margin-bottom: var(--spacing-lg);
+}
+
+.comparison-hint {
+    font-size: var(--font-size-md);
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 0;
+}
+
+.comparison-answer-btn {
+    background: var(--background-secondary);
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comparison-answer-btn:hover {
+    background: #E5E5EA;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.comparison-answer-btn.correct {
+    background: var(--success-green);
+    color: white;
+    border-color: var(--success-green);
+}
+
+.comparison-answer-btn.incorrect {
+    background: var(--error-red);
+    color: white;
+    border-color: var(--error-red);
+}
+
+.comparison-answer-btn.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+#comparison-feedback-text,
+#comparison-performance-message {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+}
+
+.feedback.correct #comparison-feedback-text {
+    color: var(--success-green);
+}
+
+.feedback.incorrect #comparison-feedback-text {
+    color: var(--error-red);
+}
+
+/* Comparison Results specific styling */
+#comparison-results-screen .results-icon {
+    font-size: 80px;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Mobile responsiveness for comparison game */
 @media (max-width: 768px) {
     .main-container {
         padding: var(--spacing-md);
@@ -859,4 +990,58 @@ body {
     .secondary-button {
         min-width: 250px;
     }
+    
+    .comparison-answer-btn {
+        min-height: 60px;
+        font-size: var(--font-size-lg);
+        padding: var(--spacing-lg);
+    }
+    
+    .comparison-hint {
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* Game Modes Info Styles */
+.game-modes-info {
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--background-secondary);
+}
+
+.game-modes-info h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.game-mode-item {
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--background-secondary);
+    border-radius: var(--radius-md);
+}
+
+.game-mode-item h4 {
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--primary-blue);
+}
+
+.game-mode-item p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.note-guide h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+    text-align: center;
 }

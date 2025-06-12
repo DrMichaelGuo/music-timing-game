@@ -16,11 +16,13 @@ A beautiful, Apple-style web game designed to help users master musical time val
 - **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
 
 ### 🎯 Educational Content
-- **Semibreve** (𝅝) - 4 beats (whole note)
-- **Minim** (𝅗𝅥) - 2 beats (half note)  
+- **Semibreve** (○) - 4 beats (whole note)
+- **Minim** (♩ with hollow head) - 2 beats (half note)  
 - **Crotchet** (♩) - 1 beat (quarter note)
 - **Quaver** (♪) - ½ beat (eighth note)
 - **Semiquaver** (♬) - ¼ beat (sixteenth note)
+
+*All musical notes are displayed using custom SVG graphics for consistent, professional appearance across all devices.*
 
 ### 🔊 Audio Features
 - **Smart Audio System**: Web Audio API with fallback sounds

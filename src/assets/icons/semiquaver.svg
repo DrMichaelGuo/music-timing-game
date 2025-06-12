@@ -1,0 +1,22 @@
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <!-- Semiquaver (Sixteenth Note) - Filled oval with stem and double flags -->
+  <ellipse cx="18" cy="32" rx="6" ry="4" 
+           fill="currentColor"/>
+  <!-- Stem -->
+  <line x1="24" y1="32" x2="24" y2="8" 
+        stroke="currentColor" 
+        stroke-width="2"/>
+  <!-- First Flag - Higher position, bold -->
+  <path d="M24 8 C30 9, 34 12, 32 16 C30 14, 28 11, 26 10 C25 9, 24 8, 24 8 Z" 
+        fill="currentColor"/>
+  <!-- Second Flag - Lower position, clearly separated -->
+  <path d="M24 16 C30 17, 34 20, 32 24 C30 22, 28 19, 26 18 C25 17, 24 16, 24 16 Z" 
+        fill="currentColor"/>
+  <!-- Additional detail lines for extra clarity -->
+  <path d="M24 10 C27 11, 29 13, 28 15 C27 14, 25 12, 24 10 Z" 
+        fill="currentColor" 
+        opacity="0.7"/>
+  <path d="M24 18 C27 19, 29 21, 28 23 C27 22, 25 20, 24 18 Z" 
+        fill="currentColor" 
+        opacity="0.7"/>
+</svg>

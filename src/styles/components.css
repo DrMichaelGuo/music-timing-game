@@ -45,7 +45,8 @@
 }
 
 /* Music note animations */
-.note-float {
+.note-float,
+.note-float svg {
     animation: float 3s ease-in-out infinite;
 }
 

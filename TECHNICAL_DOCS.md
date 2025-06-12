@@ -357,4 +357,25 @@ window.audioManager.setVolume(0.5);
 window.settingsManager.set('ui', 'theme', 'dark');
 ```
 
+## SVG Musical Notation
+
+The game now uses custom SVG icons for precise musical notation display instead of Unicode characters. This ensures:
+
+- **Consistent rendering** across all browsers and devices
+- **Scalable graphics** that look crisp at any size
+- **Professional appearance** with proper musical note proportions
+- **Accessibility support** with ARIA labels
+
+### SVG Note Types
+
+Each musical note is represented by a custom SVG:
+
+- **Semibreve (Whole Note)**: Hollow oval (4 beats)
+- **Minim (Half Note)**: Hollow oval with stem (2 beats)
+- **Crotchet (Quarter Note)**: Filled oval with stem (1 beat)
+- **Quaver (Eighth Note)**: Filled oval with stem and flag (½ beat)
+- **Semiquaver (Sixteenth Note)**: Filled oval with stem and double flag (¼ beat)
+
+All SVG icons are stored in `src/assets/icons/` and embedded inline for optimal performance.
+
 This documentation provides a comprehensive overview of the Rhythm Master architecture and can be extended as new features are added.

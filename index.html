@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Music&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="app-container">
@@ -25,11 +26,18 @@
         <section id="welcome-screen" class="screen active">
             <div class="welcome-content interactive-card">
                 <div class="icon-container">
-                    <div class="music-icon floating-element">♪</div>
+                    <div class="music-icon floating-element">
+                        <svg class="music-icon-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="18" cy="32" rx="6" ry="4" fill="currentColor"/>
+                            <line x1="24" y1="32" x2="24" y2="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M24 10 C30 12, 32 16, 28 20 C26 18, 25 16, 24 14 Z" fill="currentColor"/>
+                        </svg>
+                    </div>
                 </div>
                 <h2 class="gradient-text">Learn Musical Time Values</h2>
                 <p>Test your knowledge of crotchets, minims, semibreves, quavers, and semiquavers</p>
-                <button id="start-game-btn" class="primary-button button-press">Start Playing</button>
+                <button id="start-game-btn" class="primary-button button-press">Note Recognition</button>
+                <button id="start-comparison-btn" class="primary-button button-press">Note Comparison</button>
                 <button id="how-to-play-btn" class="secondary-button button-press">How to Play</button>
                 <button id="achievements-btn" class="secondary-button button-press">Achievements</button>
             </div>
@@ -81,37 +89,81 @@
         <section id="how-to-play-screen" class="screen">
             <div class="info-content interactive-card">
                 <h2>How to Play</h2>
+                
+                <div class="game-modes-info">
+                    <h3>Game Modes</h3>
+                    <div class="game-mode-item">
+                        <h4>🎵 Note Recognition</h4>
+                        <p>Identify the time value of different musical notes. Look at the note symbol and select how many beats it represents.</p>
+                    </div>
+                    <div class="game-mode-item">
+                        <h4>🧮 Note Comparison</h4>
+                        <p>Test your understanding of note relationships! Answer questions like "How many quavers equal one minim?" or "How many crotchets equal one semibreve?"</p>
+                    </div>
+                </div>
+                
                 <div class="note-guide">
+                    <h3>Musical Notes Reference</h3>
                     <div class="note-item interactive-card">
-                        <div class="note-symbol floating-element">𝅝</div>
+                        <div class="note-symbol floating-element">
+                            <svg class="note-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-label="Semibreve note symbol">
+                                <ellipse cx="24" cy="24" rx="12" ry="8" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                            </svg>
+                        </div>
                         <div class="note-info">
                             <h3>Semibreve</h3>
                             <p>4 beats (whole note)</p>
                         </div>
                     </div>
                     <div class="note-item interactive-card">
-                        <div class="note-symbol floating-element">𝅗𝅥</div>
+                        <div class="note-symbol floating-element">
+                            <svg class="note-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-label="Minim note symbol">
+                                <ellipse cx="20" cy="32" rx="8" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="28" y1="32" x2="28" y2="8" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
                         <div class="note-info">
                             <h3>Minim</h3>
                             <p>2 beats (half note)</p>
                         </div>
                     </div>
                     <div class="note-item interactive-card">
-                        <div class="note-symbol floating-element">♩</div>
+                        <div class="note-symbol floating-element">
+                            <svg class="note-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <ellipse cx="20" cy="32" rx="8" ry="5" fill="currentColor"/>
+                                <line x1="28" y1="32" x2="28" y2="8" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
                         <div class="note-info">
                             <h3>Crotchet</h3>
                             <p>1 beat (quarter note)</p>
                         </div>
                     </div>
                     <div class="note-item interactive-card">
-                        <div class="note-symbol floating-element">♪</div>
+                        <div class="note-symbol floating-element">
+                            <svg class="note-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-label="Quaver note symbol">
+                                <ellipse cx="18" cy="32" rx="6" ry="4" fill="currentColor"/>
+                                <line x1="24" y1="32" x2="24" y2="8" stroke="currentColor" stroke-width="2"/>
+                                <path d="M24 8 C30 10, 34 14, 32 20 C30 18, 28 14, 26 12 C25 10, 24 9, 24 8 Z" fill="currentColor"/>
+                                <path d="M24 10 C28 11, 30 14, 28 17 C27 15, 25 12, 24 10 Z" fill="currentColor" opacity="0.8"/>
+                            </svg>
+                        </div>
                         <div class="note-info">
                             <h3>Quaver</h3>
                             <p>½ beat (eighth note)</p>
                         </div>
                     </div>
                     <div class="note-item interactive-card">
-                        <div class="note-symbol floating-element">♬</div>
+                        <div class="note-symbol floating-element">
+                            <svg class="note-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-label="Semiquaver note symbol">
+                                <ellipse cx="18" cy="32" rx="6" ry="4" fill="currentColor"/>
+                                <line x1="24" y1="32" x2="24" y2="8" stroke="currentColor" stroke-width="2"/>
+                                <path d="M24 8 C30 9, 34 12, 32 16 C30 14, 28 11, 26 10 C25 9, 24 8, 24 8 Z" fill="currentColor"/>
+                                <path d="M24 16 C30 17, 34 20, 32 24 C30 22, 28 19, 26 18 C25 17, 24 16, 24 16 Z" fill="currentColor"/>
+                                <path d="M24 10 C27 11, 29 13, 28 15 C27 14, 25 12, 24 10 Z" fill="currentColor" opacity="0.7"/>
+                                <path d="M24 18 C27 19, 29 21, 28 23 C27 22, 25 20, 24 18 Z" fill="currentColor" opacity="0.7"/>
+                            </svg>
+                        </div>
                         <div class="note-info">
                             <h3>Semiquaver</h3>
                             <p>¼ beat (sixteenth note)</p>
@@ -141,33 +193,68 @@
                     <div class="question-container">
                         <h2 id="question-text">What is the time value of this note?</h2>
                         <div id="note-display" class="note-display">
-                            <div id="current-note" class="current-note floating-element">♩</div>
+                            <div id="current-note" class="current-note floating-element">
+                                <svg class="current-note-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <ellipse cx="20" cy="32" rx="8" ry="5" fill="currentColor"/>
+                                    <line x1="28" y1="32" x2="28" y2="8" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
 
                     <div class="answers-container">
                         <button class="answer-btn button-press" data-answer="semibreve">
-                            <span class="answer-symbol">𝅝</span>
+                            <span class="answer-symbol">
+                                <svg class="answer-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <ellipse cx="24" cy="24" rx="12" ry="8" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                                </svg>
+                            </span>
                             <span class="answer-name">Semibreve</span>
                             <span class="answer-beats">4 beats</span>
                         </button>
                         <button class="answer-btn button-press" data-answer="minim">
-                            <span class="answer-symbol">𝅗𝅥</span>
+                            <span class="answer-symbol">
+                                <svg class="answer-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <ellipse cx="20" cy="32" rx="8" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="28" y1="32" x2="28" y2="8" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </span>
                             <span class="answer-name">Minim</span>
                             <span class="answer-beats">2 beats</span>
                         </button>
                         <button class="answer-btn button-press" data-answer="crotchet">
-                            <span class="answer-symbol">♩</span>
+                            <span class="answer-symbol">
+                                <svg class="answer-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <ellipse cx="20" cy="32" rx="8" ry="5" fill="currentColor"/>
+                                    <line x1="28" y1="32" x2="28" y2="8" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </span>
                             <span class="answer-name">Crotchet</span>
                             <span class="answer-beats">1 beat</span>
                         </button>
                         <button class="answer-btn button-press" data-answer="quaver">
-                            <span class="answer-symbol">♪</span>
+                            <span class="answer-symbol">
+                                <svg class="answer-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <ellipse cx="18" cy="32" rx="6" ry="4" fill="currentColor"/>
+                                    <line x1="24" y1="32" x2="24" y2="8" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M24 8 C30 10, 34 14, 32 20 C30 18, 28 14, 26 12 C25 10, 24 9, 24 8 Z" fill="currentColor"/>
+                                    <path d="M24 10 C28 11, 30 14, 28 17 C27 15, 25 12, 24 10 Z" fill="currentColor" opacity="0.8"/>
+                                </svg>
+                            </span>
                             <span class="answer-name">Quaver</span>
                             <span class="answer-beats">½ beat</span>
                         </button>
                         <button class="answer-btn button-press" data-answer="semiquaver">
-                            <span class="answer-symbol">♬</span>
+                            <span class="answer-symbol">
+                                <svg class="answer-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <ellipse cx="18" cy="32" rx="6" ry="4" fill="currentColor"/>
+                                    <line x1="24" y1="32" x2="24" y2="8" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M24 8 C30 9, 34 12, 32 16 C30 14, 28 11, 26 10 C25 9, 24 8, 24 8 Z" fill="currentColor"/>
+                                    <path d="M24 16 C30 17, 34 20, 32 24 C30 22, 28 19, 26 18 C25 17, 24 16, 24 16 Z" fill="currentColor"/>
+                                    <path d="M24 10 C27 11, 29 13, 28 15 C27 14, 25 12, 24 10 Z" fill="currentColor" opacity="0.7"/>
+                                    <path d="M24 18 C27 19, 29 21, 28 23 C27 22, 25 20, 24 18 Z" fill="currentColor" opacity="0.7"/>
+                                </svg>
+                            </span>
                             <span class="answer-name">Semiquaver</span>
                             <span class="answer-beats">¼ beat</span>
                         </button>
@@ -193,6 +280,60 @@
                     <div class="results-actions">
                         <button id="play-again-btn" class="primary-button button-press">Play Again</button>
                         <button id="back-to-menu-btn" class="secondary-button button-press">Main Menu</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Note Comparison Game Screen -->
+            <section id="comparison-screen" class="screen">
+                <div class="game-header glass-effect">
+                    <div class="score-container">
+                        <span class="score-label">Score</span>
+                        <span id="comparison-score" class="score-value">0</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div id="comparison-progress-fill" class="progress-fill"></div>
+                        </div>
+                        <span id="comparison-question-counter" class="question-counter">1/10</span>
+                    </div>
+                </div>
+
+                <div class="game-content interactive-card">
+                    <div class="question-container">
+                        <h2 id="comparison-question-text">How many quavers equal one minim?</h2>
+                        <div class="comparison-info">
+                            <p class="comparison-hint">Think about the relationship between note values!</p>
+                        </div>
+                    </div>
+
+                    <div class="answers-container">
+                        <button class="comparison-answer-btn button-press" data-answer="1">1</button>
+                        <button class="comparison-answer-btn button-press" data-answer="2">2</button>
+                        <button class="comparison-answer-btn button-press" data-answer="3">3</button>
+                        <button class="comparison-answer-btn button-press" data-answer="4">4</button>
+                    </div>
+
+                    <div id="comparison-feedback" class="feedback hidden">
+                        <div id="comparison-feedback-text"></div>
+                        <button id="next-comparison-btn" class="primary-button button-press">Next Question</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comparison Results Screen -->
+            <section id="comparison-results-screen" class="screen">
+                <div class="results-content interactive-card">
+                    <div class="results-icon floating-element">🧮</div>
+                    <h2 class="gradient-text">Comparison Complete!</h2>
+                    <div class="final-score">
+                        <span class="score-text">Your Score</span>
+                        <span id="comparison-final-score" class="final-score-value gradient-text">0/10</span>
+                    </div>
+                    <div id="comparison-performance-message" class="performance-message"></div>
+                    <div class="results-actions">
+                        <button id="play-comparison-again-btn" class="primary-button button-press">Play Again</button>
+                        <button id="back-to-menu-from-comparison-btn" class="secondary-button button-press">Main Menu</button>
                     </div>
                 </div>
             </section>

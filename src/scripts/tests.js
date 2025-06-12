@@ -179,16 +179,5 @@ class RhythmMasterTests {
     }
 }
 
-// Auto-run tests in development mode
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    // Run tests after everything loads
-    setTimeout(() => {
-        if (confirm('Run automated tests for Rhythm Master?')) {
-            const tester = new RhythmMasterTests();
-            tester.runTests();
-        }
-    }, 1000);
-}
-
-// Export for manual testing
+// Export for manual testing - tests can be run via console: new RhythmMasterTests().runTests()
 window.RhythmMasterTests = RhythmMasterTests;
