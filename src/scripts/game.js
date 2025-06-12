@@ -63,12 +63,17 @@ class RhythmMasterGame {
     }
     
     setupEventListeners() {
+        // Header navigation buttons
+        const homeBtn = document.getElementById('home-btn');
+        const navHomeBtn = document.getElementById('nav-home-btn');
+        const navNoteGameBtn = document.getElementById('nav-note-game-btn');
+        const navComparisonGameBtn = document.getElementById('nav-comparison-game-btn');
+        const navHelpBtn = document.getElementById('nav-help-btn');
+        
         // Welcome screen buttons
         const startGameBtn = document.getElementById('start-game-btn');
         const howToPlayBtn = document.getElementById('how-to-play-btn');
-        const achievementsBtn = document.getElementById('achievements-btn');
         const backToWelcomeBtn = document.getElementById('back-to-welcome-btn');
-        const backFromAchievementsBtn = document.getElementById('back-from-achievements-btn');
         
         // Game screen buttons
         const answerButtons = document.querySelectorAll('.answer-btn');
@@ -80,11 +85,6 @@ class RhythmMasterGame {
         
         // Comparison game buttons
         const startComparisonBtn = document.getElementById('start-comparison-btn');
-        const comparisonAnswerButtons = document.querySelectorAll('.comparison-answer-btn');
-        const nextComparisonBtn = document.getElementById('next-comparison-btn');
-        const backFromComparisonBtn = document.getElementById('back-from-comparison-btn');
-        const playComparisonAgainBtn = document.getElementById('play-comparison-again-btn');
-        const backToMenuFromComparisonBtn = document.getElementById('back-to-menu-from-comparison-btn');
         
         if (startGameBtn) {
             startGameBtn.addEventListener('click', () => this.startGame());
@@ -98,20 +98,37 @@ class RhythmMasterGame {
             });
         }
         
+        // Header navigation event listeners
+        if (homeBtn) {
+            homeBtn.addEventListener('click', () => this.showWelcomeScreen());
+        }
+        
+        if (navHomeBtn) {
+            navHomeBtn.addEventListener('click', () => this.showWelcomeScreen());
+        }
+        
+        if (navNoteGameBtn) {
+            navNoteGameBtn.addEventListener('click', () => this.startGame());
+        }
+        
+        if (navComparisonGameBtn) {
+            navComparisonGameBtn.addEventListener('click', () => {
+                if (window.noteComparisonGame) {
+                    window.noteComparisonGame.startGame();
+                }
+            });
+        }
+        
+        if (navHelpBtn) {
+            navHelpBtn.addEventListener('click', () => this.showHowToPlayScreen());
+        }
+        
         if (howToPlayBtn) {
             howToPlayBtn.addEventListener('click', () => this.showHowToPlayScreen());
         }
         
-        if (achievementsBtn) {
-            achievementsBtn.addEventListener('click', () => this.showAchievementsScreen());
-        }
-        
         if (backToWelcomeBtn) {
             backToWelcomeBtn.addEventListener('click', () => this.showWelcomeScreen());
-        }
-        
-        if (backFromAchievementsBtn) {
-            backFromAchievementsBtn.addEventListener('click', () => this.showWelcomeScreen());
         }
         
         answerButtons.forEach(btn => {
@@ -129,30 +146,6 @@ class RhythmMasterGame {
         if (backToMenuBtn) {
             backToMenuBtn.addEventListener('click', () => this.showWelcomeScreen());
         }
-        
-        if (startComparisonBtn) {
-            startComparisonBtn.addEventListener('click', () => this.startComparisonGame());
-        }
-        
-        comparisonAnswerButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => this.handleComparisonAnswer(e));
-        });
-        
-        if (nextComparisonBtn) {
-            nextComparisonBtn.addEventListener('click', () => this.nextQuestion());
-        }
-        
-        if (backFromComparisonBtn) {
-            backFromComparisonBtn.addEventListener('click', () => this.showWelcomeScreen());
-        }
-        
-        if (playComparisonAgainBtn) {
-            playComparisonAgainBtn.addEventListener('click', () => this.startGame());
-        }
-        
-        if (backToMenuFromComparisonBtn) {
-            backToMenuFromComparisonBtn.addEventListener('click', () => this.showWelcomeScreen());
-        }
     }
     
     showScreen(screenId) {
@@ -165,6 +158,39 @@ class RhythmMasterGame {
         const targetScreen = document.getElementById(screenId);
         if (targetScreen) {
             targetScreen.classList.add('active');
+        }
+        
+        // Update navigation state
+        this.updateNavigation(screenId);
+    }
+    
+    updateNavigation(screenId) {
+        // Remove active class from all nav buttons
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Add active class to current nav button
+        let activeNavBtn = null;
+        switch (screenId) {
+            case 'welcome-screen':
+                activeNavBtn = document.getElementById('nav-home-btn');
+                break;
+            case 'game-screen':
+            case 'results-screen':
+                activeNavBtn = document.getElementById('nav-note-game-btn');
+                break;
+            case 'comparison-screen':
+            case 'comparison-results-screen':
+                activeNavBtn = document.getElementById('nav-comparison-game-btn');
+                break;
+            case 'how-to-play-screen':
+                activeNavBtn = document.getElementById('nav-help-btn');
+                break;
+        }
+        
+        if (activeNavBtn) {
+            activeNavBtn.classList.add('active');
         }
     }
     
@@ -182,14 +208,6 @@ class RhythmMasterGame {
     
     showResultsScreen() {
         this.showScreen('results-screen');
-    }
-    
-    showAchievementsScreen() {
-        this.showScreen('achievements-screen');
-        // Update achievements display when screen is shown
-        if (window.uiManager) {
-            window.uiManager.updateAchievementsDisplay();
-        }
     }
     
     startGame() {
@@ -545,6 +563,11 @@ class NoteComparisonGame {
         const targetScreen = document.getElementById(screenId);
         if (targetScreen) {
             targetScreen.classList.add('active');
+        }
+        
+        // Update navigation state using the main game's method
+        if (window.rhythmMasterGame) {
+            window.rhythmMasterGame.updateNavigation(screenId);
         }
     }
     
